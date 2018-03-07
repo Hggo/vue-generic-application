@@ -3,7 +3,6 @@
         <div class="fields">
             <form-field :value="field" v-for="field in classe.fields"></form-field>
         </div>
-        <form-button type="pesquisar" title="Cancelar"></form-button>
     </form>
 </template>
 
@@ -36,10 +35,6 @@
 
     form {
         margin: 10px;
-    }
-
-    button {
-        margin-bottom: 20px !important;
     }
 
 </style>
