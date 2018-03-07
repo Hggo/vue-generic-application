@@ -17,7 +17,7 @@
         },
         computed: {
             classButton() {
-                return this.type == 'pesquisar' ? 'secondary' : '';
+                return this.type == 'pesquisar' ? 'secondary' : ( this.type == 'adicionar' ? 'primary' : '' );
             }
         }
     }
