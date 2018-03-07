@@ -54,7 +54,7 @@
         display: block !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        height: 80%;
+        overflow:auto;
     }
 
 </style>
