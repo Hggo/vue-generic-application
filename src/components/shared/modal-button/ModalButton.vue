@@ -51,10 +51,15 @@
 
     .modal {
         margin-top: 100px !important;
+        margin-bottom: 100px !important;
         display: block !important;
         margin-left: auto !important;
         margin-right: auto !important;
         height: 80%;
+    }
+
+    .content {
+        height: 100%
     }
 
 </style>

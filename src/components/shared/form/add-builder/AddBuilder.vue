@@ -38,4 +38,13 @@
         margin: 10px;
     }
 
+    form-button {
+        position: fixed; 
+        bottom: 0;
+    }
+
+    form {
+        height: 100%
+    }
+
 </style>
