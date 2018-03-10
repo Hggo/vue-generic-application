@@ -8,6 +8,7 @@
                 <sui-modal-description>
                     <sui-header>Cadastro</sui-header>
                     <slot></slot>
+                    <form-button type="pesquisar" title="Cancelar" @click.native="toggle"></form-button>
                 </sui-modal-description>
             </sui-modal-content>
         </sui-modal>
@@ -40,7 +41,7 @@
         },
         methods: {
             toggle(){
-                this.open = true;
+                this.open = !this.open;
             }
         }
     }
@@ -55,7 +56,12 @@
         display: block !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        height: 80%;
+        overflow:auto;
+    }
+
+    button {
+        margin-left: 10px !important;
+        margin-bottom: 20px !important;
     }
 
     .content {
