@@ -13,15 +13,16 @@
     </form>
 </template>
 
-<script>
+<script lang="ts">
 
-    import FormField from '../form-field/FormField'
-    import FormFieldSelect from '../form-field/form-field-select/FormFieldSelect'
-    import FormButton from '../../form-button/FormButton'
-    import ModalButton from '../../modal-button/ModalButton'
-    import AddBuilder from '../add-builder/AddBuilder'
+    import Vue from 'vue';
+    import FormField from '../form-field/FormField.vue'
+    import FormFieldSelect from '../form-field/form-field-select/FormFieldSelect.vue'
+    import FormButton from '../../form-button/FormButton.vue'
+    import ModalButton from '../../modal-button/ModalButton.vue'
+    import AddBuilder from '../add-builder/AddBuilder.vue'
 
-    export default {
+    export default Vue.extend({
 
         components: {
             'form-field' : FormField,
@@ -30,17 +31,13 @@
             'add-builder' : AddBuilder,
             'form-field-select' : FormFieldSelect
         },
-        props: {
-            classe: {
-                required: true
-            }
-        },
+        props: ['classe'],
         data(){
             return {
                 buffer: this.classe
             }
         },
-    }
+    });
 
 </script>
 

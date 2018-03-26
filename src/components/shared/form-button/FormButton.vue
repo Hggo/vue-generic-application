@@ -2,9 +2,11 @@
     <button class="ui button" :class="classButton" type="button">{{ title }}</button>
 </template>
 
-<script>
+<script lang="ts">
 
-    export default {
+    import Vue from 'vue';
+   
+    export default Vue.extend({
         props: {
             type: {
                 required: true,
@@ -16,11 +18,11 @@
             }
         },
         computed: {
-            classButton() {
+            classButton() : String {
                 return this.type == 'pesquisar' ? 'secondary' : ( this.type == 'adicionar' ? 'primary' : '' );
             }
         }
-    }
+    });
 
 </script>
 

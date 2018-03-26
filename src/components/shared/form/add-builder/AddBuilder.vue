@@ -9,28 +9,25 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 
-    import FormField from '../form-field/FormField'
-    import FormButton from '../../form-button/FormButton'
+    import Vue from 'vue';
+    import FormField from '../form-field/FormField.vue'
+    import FormButton from '../../form-button/FormButton.vue'
 
-    export default {
+    export default Vue.extend({
 
         components: {
             'form-field' : FormField,
             'form-button' : FormButton
-        },
-        props: {
-            classe: {
-                required: true
-            }
         },
         data(){
             return {
                 buffer: this.classe
             }
         },
-    }
+        props: [ 'classe' ],
+    });
 
 </script>
 

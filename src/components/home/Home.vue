@@ -2,24 +2,23 @@
     <query-builder :classe="medico"></query-builder>
 </template>
 
-<script>
+<script lang="ts">
 
+import Vue from 'vue';
 import Medico from '../../domain/medico/Medico'
-import QueryBuilder from '../shared/form/query-builder/QueryBuilder'
+import QueryBuilder from '../shared/form/query-builder/QueryBuilder.vue'
 
-export default {
+export default Vue.extend({
     
     components: {
         'query-builder' : QueryBuilder,
     },
+    
     created() {
-
-        this.medico = new Medico();
-      
+        this.medico = new Medico("", 0, "", "");
     }, 
 
-}
-
+});
 
 </script>
 

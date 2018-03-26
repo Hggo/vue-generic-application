@@ -1,10 +1,8 @@
 export default class Medico {
   
-  constructor( nome = '', idade = 0, crm = '', uf = '') {
-    this.nome = nome
-    this.idade = idade
-    this.crm = crm
-    this.uf = uf;
+  private fields: any[];
+
+  constructor( private nome : String = "", private idade : Number = 0, private crm : String = "", private uf : String = "") {
     this.fields = this.getFields();
   }
 
@@ -25,9 +23,9 @@ export default class Medico {
           type: 'number'
         },
         {
-            title: 'CRM',
-            field: this.crm,
-            type: 'number'
+          title: 'CRM',
+          field: this.crm,
+          type: 'number'
         },
         {
           title: 'UF',
