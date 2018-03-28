@@ -3,8 +3,8 @@
         <h4 class="ui dividing header">{{ classe.getClassTitle() }}</h4>
         <div class="fields">
             <!-- this should be a directive -->
-            <form-field :value="field" v-for="field in classe.fields" v-if="field.type == 'text' || field.type == 'number'"></form-field>
-            <form-field-select :value="field" v-for="field in classe.fields" v-if="field.type == 'select'"></form-field-select>
+            <form-field :value="field" v-for="field in classe.fields" v-if="field.type == 'text' || field.type == 'number'" v-bind:data="field" v-bind:key="field.type"></form-field>
+            <form-field-select :value="field" v-for="field in classe.fields" v-if="field.type == 'select'"  v-bind:data="field" v-bind:key="field.type"></form-field-select>
         </div>
         <form-button type="pesquisar" title="Pesquisar"/>
         <modal-button :classe="classe" :titulo="classe.getClassTitle()">

@@ -2,7 +2,7 @@
     <div>
         <form class="ui form">
             <div class="fields">
-                <form-field :value="field" v-for="field in classe.fields"></form-field>
+                <form-field :value="field" v-for="field in classe.fields" v-bind:data="field" v-bind:key="field.type"></form-field>
             </div>
         </form>
         <form-button type="adicionar" title="Adicionar"></form-button>
