@@ -1,13 +1,24 @@
-export default class Medico {
+import { GenericModel } from "../generic/GenericModel";
+
+export class MedicoModel extends GenericModel{
   
   private fields: any[];
-
-  constructor( private nome : String = "", private idade : Number = 0, private crm : String = "", private uf : String = "") {
+  private nome : String = ""; 
+  private idade : Number = 0; 
+  private crm : String = ""; 
+  private uf : String = "";
+  
+  constructor() {
+    super();
     this.fields = this.getFields();
   }
 
   getClassTitle(){
     return 'Médico';
+  }
+
+  getUrl(){
+      return 'medicos';
   }
 
   getFields(){

@@ -5,8 +5,8 @@
 <script lang="ts">
 
 import Vue from 'vue';
-import Medico from '../../domain/medico/Medico'
 import QueryBuilder from '../shared/form/query-builder/QueryBuilder.vue'
+import { MedicoModel } from '../../domain/model/medico/MedicoModel';
 
 export default Vue.extend({
     
@@ -15,7 +15,7 @@ export default Vue.extend({
     },
     
     created() {
-        this.medico = new Medico("", 0, "", "");
+        this.medico = new MedicoModel();
     }, 
 
 });

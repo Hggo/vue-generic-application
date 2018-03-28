@@ -5,4 +5,6 @@ declare module "*.vue" {
     export default component;
 }
 
+
 declare module 'semantic-ui-vue';
+declare module 'vue-resource';

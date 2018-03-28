@@ -12,8 +12,8 @@
 <script lang="ts">
 
     import Vue from 'vue';
-    import FormField from '../form-field/FormField.vue'
-    import FormButton from '../../form-button/FormButton.vue'
+    import FormField from '../form-field/FormField.vue';
+    import FormButton from '../../form-button/FormButton.vue';
 
     export default Vue.extend({
 
