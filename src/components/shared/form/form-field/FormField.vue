@@ -2,7 +2,7 @@
     <div class="field">
         <label class="ui left">{{ buffer.title }}</label>
         <div class="ui input focus">
-            <input :type="buffer.type" :placeholder="buffer.title" v-model="buffer.field" @input="$emit('input', buffer.field)">
+            <input :type="buffer.type" :placeholder="buffer.title" v-model="buffer.value" @input="$emit('input', buffer.value)">
         </div>
     </div>
 </template>

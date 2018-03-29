@@ -3,14 +3,19 @@
         <h4 class="ui dividing header">{{ classe.getClassTitle() }}</h4>
         <div class="fields">
             <!-- this should be a directive -->
-            <form-field :value="field" v-for="field in classe.fields" v-if="field.type == 'text' || field.type == 'number'" v-bind:data="field" v-bind:key="field.type"></form-field>
-            <form-field-select :value="field" v-for="field in classe.fields" v-if="field.type == 'select'"  v-bind:data="field" v-bind:key="field.type"></form-field-select>
+            <div class="form" v-for="(field, index) in classe.fields" v-bind:key="index">
+                <form-field :value="field"  v-if="field.type == 'text' || field.type == 'number'"></form-field>
+                <form-field-select :value="field" v-if="field.type == 'select'"  v-bind:data="field"></form-field-select>
+            </div>
+            
         </div>
         <!--<pesquisar-button :classe="classe"/>-->
         <form-button type="pesquisar" title="Pesquisar" @click.native="pesquisar"/>
         <modal-button :classe="classe" :titulo="classe.getClassTitle()">
             <add-builder :classe="classe"></add-builder>
         </modal-button>
+
+        <data-table :data="dados" :classe="classe"/>
     </form>
 </template>
 
@@ -24,6 +29,7 @@
     import AddBuilder from '../add-builder/AddBuilder.vue'
     import PesquisarButton from '../../form-button/pesquisar-button/PesquisarButton.vue'
     import MedicoService from '../../../../domain/service/MedicoService';
+    import DataTable from '../../table/DataTable.vue'
 
     export default Vue.extend({
 
@@ -33,30 +39,42 @@
             'modal-button' : ModalButton,
             'add-builder' : AddBuilder,
             'form-field-select' : FormFieldSelect,
-            'pesquisar-button' : PesquisarButton
+            'pesquisar-button' : PesquisarButton,
+            'data-table' : DataTable
         },
         props: ['classe'],
-        data(){
+        data() {
             return {
-                buffer: this.classe
+                dados: []   
             }
         },
         methods: {
             pesquisar(){
-                this.service.lista().then(data => console.log(data.data));
+                this.service.lista()
+                            .then(data => this.montaDados(data.data));
+            },
+            montaDados(dados){
+                this.dados = dados;
             }
         },
+        watch: {
+            dados : function(){
+                this.data = this.dados;
+            }
+        },
+        computed:{
+            
+        },
         created(){
-            console.log("aa");
             this.service = new MedicoService(this.$http);
-        }
+        },
     });
 
 </script>
 
 <style scoped>
 
-    form {
+    form .form{
         margin: 10px;
     }
 
