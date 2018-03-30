@@ -2,35 +2,32 @@
     <div>
         <form class="ui form">
             <div class="fields">
-                <form-field :value="field" v-for="field in classe.fields"></form-field>
+                <form-field :value="field" v-for="field in classe.fields" v-bind:data="field" v-bind:key="field.type"></form-field>
             </div>
         </form>
         <form-button type="adicionar" title="Adicionar"></form-button>
     </div>
 </template>
 
-<script>
+<script lang="ts">
 
-    import FormField from '../form-field/FormField'
-    import FormButton from '../../form-button/FormButton'
+    import Vue from 'vue';
+    import FormField from '../form-field/FormField.vue';
+    import FormButton from '../../form-button/FormButton.vue';
 
-    export default {
+    export default Vue.extend({
 
         components: {
             'form-field' : FormField,
             'form-button' : FormButton
-        },
-        props: {
-            classe: {
-                required: true
-            }
         },
         data(){
             return {
                 buffer: this.classe
             }
         },
-    }
+        props: [ 'classe' ],
+    });
 
 </script>
 

@@ -15,11 +15,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 
-    import FormButton from '../form-button/FormButton'
+    import Vue from 'vue';
 
-    export default {
+    import FormButton from '../form-button/FormButton.vue'
+
+    export default Vue.extend({
         components: {
             'form-button' : FormButton,
         },
@@ -44,7 +46,7 @@
                 this.open = !this.open;
             }
         }
-    }
+    });
 
 </script>
 

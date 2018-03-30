@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/home/Home'
-
-import 'semantic-ui-css/semantic.min.css';
+import Home from '../components/home/Home.vue'
 
 Vue.use(Router)
 
@@ -14,4 +12,4 @@ export default new Router({
       component: Home
     }
   ]
-})
+});
