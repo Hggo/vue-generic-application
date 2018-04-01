@@ -1,12 +1,14 @@
 <template lang="html">
     <div>
-        <form-button type="novo" title="Novo" @click.native="toggle"/>
+        
+        <form-button type="novo" :title="texto" @click.native="toggle" v-if="!icon"/>
+        <icon-button :type="icon" @click.native="toggle" v-if="icon"/>
 
         <sui-modal v-model="open">
             <sui-modal-header>{{ titulo }}</sui-modal-header>
             <sui-modal-content>
                 <sui-modal-description>
-                    <sui-header>Cadastro</sui-header>
+                    <sui-header>{{ getTitle() }}</sui-header>
                     <slot></slot>
                     <form-button type="pesquisar" title="Cancelar" @click.native="toggle"></form-button>
                 </sui-modal-description>
@@ -18,12 +20,13 @@
 <script lang="ts">
 
     import Vue from 'vue';
-
-    import FormButton from '../form-button/FormButton.vue'
+    import FormButton from '../form-button/FormButton.vue';
+    import IconButton from '../form-button/IconButton.vue';
 
     export default Vue.extend({
         components: {
             'form-button' : FormButton,
+            'icon-button' : IconButton
         },
         data() {
             return { open: false };
@@ -36,6 +39,14 @@
             titulo: {
                 required: true,
                 type: String
+            },
+            icon: {
+                required: false,
+                type: String
+            },
+            texto: {
+                required: false,
+                type: String
             }
         },
         created(){
@@ -44,6 +55,9 @@
         methods: {
             toggle(){
                 this.open = !this.open;
+            },
+            getTitle(){
+                return this.classe['_id'] != undefined ? 'Alteração' : 'Cadastro';
             }
         }
     });

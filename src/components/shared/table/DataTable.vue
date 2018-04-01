@@ -1,14 +1,19 @@
 <template>
-
-    <table class="ui sortable celled table" id="tabela">
+    <table class="ui very compact sortable table" id="tabela">
         <thead>
             <tr>
-                <th v-for="(field, index) in classe.getFields()" v-bind:key="index" v-on:click="sort(field)">{{ field.title }}</th>
+                <th v-for="(field, index) in classe.getFields()" v-bind:key="index" :class="getSorting(field)" v-on:click="sort(field)">{{ field.title }}</th>
+                <th class="table-button"></th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="(linha, i) in tableData" v-bind:key="i">
                 <td v-for="(field, index) in linha.getFields()" v-bind:key="index">{{ linha[field.field] }}</td>
+                <td>
+                <modal-button :classe="getLinha(i)" :titulo="classe.getClassTitle()" icon="edit">
+                    <add-builder :classe="getLinha(i)" :ind="i"></add-builder>
+                </modal-button>
+                </td>
             </tr>
         </tbody>
         <!--<tfoot>
@@ -22,7 +27,7 @@
                 <a class="item">3</a>
                 <a class="item">4</a>
                 <a class="icon item">
-                <i class="right chevron icon"></i>
+                    <i class="right chevron icon"></i>
                 </a>
             </div>
             </th>
@@ -34,9 +39,17 @@
 <script lang="ts">
 
     import Vue from 'vue';
+    import IconButton from '../form-button/IconButton.vue';
+    import AddBuilder from '../form/add-builder/AddBuilder.vue';
+    import ModalButton from '../modal-button/ModalButton';
 
     export default Vue.extend({
 
+        components: {
+            'icon-button': IconButton,
+            'add-builder': AddBuilder,
+            'modal-button': ModalButton
+        },
         props: ['data', 'classe'],
         data(){
             return {
@@ -51,6 +64,9 @@
             }
         },
         methods: {
+            getLinha(index){
+                return this.tableData[index];
+            },
             montaModelos(data){
                 let lista = [] as any[];
                
@@ -74,6 +90,19 @@
 
                 if(this.inverse)
                     this.tableData = this.tableData.reverse();
+            }, 
+            getSorting(field){
+                let css = "";
+                
+                if(field.field == this.order){
+                    css += "sorted";
+                    if(this.inverse)
+                        css += " descending";
+                    else 
+                        css += " ascending";
+                }
+                
+                return css;
             }
         }
     });
@@ -81,5 +110,9 @@
 </script>
 
 <style>
+
+    .table-button{
+        width: 5%
+    }
 
 </style>

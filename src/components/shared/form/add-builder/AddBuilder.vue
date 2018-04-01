@@ -2,10 +2,10 @@
     <div>
         <form class="ui form">
             <div class="fields">
-                <form-field :value="field" v-for="field in classe.fields" v-bind:data="field" v-bind:key="field.type"></form-field>
+                <form-field :value="field" v-for="(field, index) in classe.fields" v-bind:data="field" v-bind:key="index"></form-field>
             </div>
         </form>
-        <form-button type="adicionar" title="Adicionar"></form-button>
+        <form-button type="adicionar" :title="getTitleButton()"></form-button>
     </div>
 </template>
 
@@ -23,7 +23,12 @@
         },
         data(){
             return {
-                buffer: this.classe
+                buffer: this.classe,
+            }
+        },
+        methods: {
+            getTitleButton(){
+                return this.classe['_id'] != undefined ? 'Alterar' : 'Adicionar';
             }
         },
         props: [ 'classe' ],
