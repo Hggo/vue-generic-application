@@ -41,7 +41,7 @@
     import Vue from 'vue';
     import IconButton from '../form-button/IconButton.vue';
     import AddBuilder from '../form/add-builder/AddBuilder.vue';
-    import ModalButton from '../modal-button/ModalButton';
+    import ModalButton from '../modal-button/ModalButton.vue';
 
     export default Vue.extend({
 
@@ -69,11 +69,11 @@
             },
             montaModelos(data){
                 let lista = [] as any[];
-               
+                
                 data.forEach(element => {
                     lista.push(new this.classe.constructor(element));
                 });
-                return lista
+                return lista;
             },
             sort(field){
                 if(field.field == this.order)
